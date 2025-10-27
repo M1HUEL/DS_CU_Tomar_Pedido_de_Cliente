@@ -4,11 +4,11 @@ package src.tomarPedido;
  *
  * @author Luis Francisco Salido Varela
  */
-public class PedidoService {
+public class ServicioPedido {
 
     private PedidoDAO pedidoDAO;
 
-    public PedidoService(PedidoDAO pedidoDAO) {
+    public ServicioPedido(PedidoDAO pedidoDAO) {
         this.pedidoDAO = pedidoDAO;
     }
 

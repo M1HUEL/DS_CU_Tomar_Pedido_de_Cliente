@@ -4,11 +4,11 @@ package src.tomarPedido;
  *
  * @author José Antonio González Valle
  */
-public class PedidoController {
+public class ControladorPedido {
 
-    private PedidoService service;
+    private ServicioPedido service;
 
-    public PedidoController(PedidoService service) {
+    public ControladorPedido(ServicioPedido service) {
         this.service = service;
     }
 
