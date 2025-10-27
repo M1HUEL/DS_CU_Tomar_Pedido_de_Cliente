@@ -10,8 +10,6 @@ package src.tomarPedido;
 
 import dto.PedidoDTO;
 import dto.DetallePedidoDTO;
-import service.PedidoService;
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -27,34 +25,12 @@ public class PedidoController {
         this.service = service;
     }
 
-    /**
-     * Crea un nuevo pedido, delegando el procesamiento al servicio.
-     *
-     * @param pedido Objeto PedidoDTO con la información del pedido
-     * @param detalles Lista de DetallePedidoDTO con los platillos del pedido
-     */
     public void crearNuevoPedido(PedidoDTO pedido, List<DetallePedidoDTO> detalles) {
         try {
             service.procesarPedido(pedido, detalles);
             System.out.println("Pedido registrado correctamente.");
         } catch (SQLException e) {
             System.err.println("Error al registrar el pedido: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Actualiza el estado de un pedido.
-     *
-     * @param pedido PedidoDTO a actualizar
-     * @param nuevoEstado Nuevo estado del pedido
-     */
-    public void actualizarEstadoPedido(PedidoDTO pedido, String nuevoEstado) {
-        pedido.setEstado(nuevoEstado);
-        try {
-            service.getPedidoDAO().actualizarPedido(pedido);
-            System.out.println("Estado del pedido actualizado a: " + nuevoEstado);
-        } catch (SQLException e) {
-            System.err.println("Error al actualizar el estado: " + e.getMessage());
         }
     }
 }
