@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package src.tomarPedido;
 
 /**
  *
- * @author migue
+ * @author Luis Francisco Salido Varela
  */
 public class PedidoService {
-    
+
+    private PedidoDAO pedidoDAO;
+
+    public PedidoService(PedidoDAO pedidoDAO) {
+        this.pedidoDAO = pedidoDAO;
+    }
+
+    public void procesarPedido() {
+        System.out.println("El pedido se está procesando!");
+    }
 }
