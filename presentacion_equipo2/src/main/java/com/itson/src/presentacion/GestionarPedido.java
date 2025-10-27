@@ -1,17 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.itson.src.presentacion;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
- * @author migue
+ * @author Manuel Donato Hernandez Burgos
  */
 public class GestionarPedido extends javax.swing.JFrame {
 
     public GestionarPedido() {
         initComponents();
+
+        setLayout(new BorderLayout());
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JLabel titulo = new JLabel("Gestionar Pedido");
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JButton button2 = new JButton("Hey!");
+
+        panel.add(titulo, BorderLayout.NORTH);
+        panel.add(button2, BorderLayout.CENTER);
+
+        add(panel, BorderLayout.CENTER);
     }
 
     /**
