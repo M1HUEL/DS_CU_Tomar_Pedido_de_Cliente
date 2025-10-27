@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package src.tomarPedido;
 
 /**
  *
- * @author migue
+ * @author José Antonio González Valle
  */
 public class PedidoController {
-    
+
+    private PedidoService service;
+
+    public PedidoController(PedidoService service) {
+        this.service = service;
+    }
+
+    public void crearNuevoPedido() {
+        System.out.println("El pedido se ha creado correctamente!");
+    }
 }
