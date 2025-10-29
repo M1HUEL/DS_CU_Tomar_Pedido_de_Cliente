@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        GestionarPedido gestionarPedido = new GestionarPedido();
+        SeleccionarPedido gestionarPedido = new SeleccionarPedido();
         gestionarPedido.setVisible(true);
 
     }
