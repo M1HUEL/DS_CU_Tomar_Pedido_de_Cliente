@@ -1,9 +1,123 @@
 package com.itson.src.presentacion;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+import tomarPedido.objetosNegocio.Complemento;
+import tomarPedido.objetosNegocio.Ingrediente;
+import tomarPedido.objetosNegocio.Pedido;
+
 public class PersonalizarPedido extends javax.swing.JFrame {
 
-    public PersonalizarPedido() {
+    private Pedido pedido;
+    private List<JCheckBox> ingredientCheckboxes = new ArrayList<>();
+    private List<JCheckBox> complementoCheckboxes = new ArrayList<>();
+    private JTextArea txtComentario;
+
+    public PersonalizarPedido(Pedido pedido) {
         initComponents();
+
+        this.pedido = pedido;
+
+        setLayout(new BorderLayout());
+
+        setTitle("Personalizar Pedido #" + pedido.getId());
+
+        JPanel panel = new JPanel(new BorderLayout(10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JPanel contenido = new JPanel(new BorderLayout(10, 10));
+
+        JLabel titulo = new JLabel("Personalizar pedido de " + pedido.getCliente(), SwingConstants.CENTER);
+
+        JPanel centro = new JPanel(new GridLayout(0, 1, 5, 5));
+        centro.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        centro.add(new JLabel("Ingredientes:"));
+
+        JPanel panelIngredientes = new JPanel(new GridLayout(0, 2, 5, 5));
+        for (Ingrediente i : pedido.getIngredientes()) {
+            JCheckBox cb = new JCheckBox(i.getNombre() + " ($" + i.getPrecio() + ")", true);
+            ingredientCheckboxes.add(cb);
+            panelIngredientes.add(cb);
+        }
+        centro.add(panelIngredientes);
+
+        centro.add(new JLabel("Complementos:"));
+
+        JPanel panelComplementos = new JPanel(new GridLayout(0, 2, 5, 5));
+        for (Complemento c : pedido.getComplementos()) {
+            JCheckBox cb = new JCheckBox(c.getNombre() + " ($" + c.getPrecio() + ")", true);
+            complementoCheckboxes.add(cb);
+            panelComplementos.add(cb);
+        }
+        centro.add(panelComplementos);
+
+        centro.add(new JLabel("Comentario:"));
+
+        txtComentario = new JTextArea(pedido.getComentario(), 3, 20);
+        txtComentario.setLineWrap(true);
+        txtComentario.setWrapStyleWord(true);
+
+        JScrollPane scrollComentario = new JScrollPane(txtComentario);
+
+        centro.add(scrollComentario);
+
+        contenido.add(titulo, BorderLayout.NORTH);
+        contenido.add(new JScrollPane(centro), BorderLayout.CENTER);
+
+        JButton btnConfirmar = new JButton("Actualizar pedido");
+        btnConfirmar.addActionListener(e -> actualizarPedido());
+
+        panel.add(contenido, BorderLayout.CENTER);
+        panel.add(btnConfirmar, BorderLayout.SOUTH);
+
+        add(panel, BorderLayout.CENTER);
+    }
+
+    private void actualizarPedido() {
+        List<Ingrediente> nuevosIngredientes = new ArrayList<>();
+        for (int i = 0; i < ingredientCheckboxes.size(); i++) {
+            if (ingredientCheckboxes.get(i).isSelected()) {
+                nuevosIngredientes.add(pedido.getIngredientes().get(i));
+            }
+        }
+        pedido.getIngredientes().clear();
+        pedido.getIngredientes().addAll(nuevosIngredientes);
+
+        List<Complemento> nuevosComplementos = new ArrayList<>();
+        for (int i = 0; i < complementoCheckboxes.size(); i++) {
+            if (complementoCheckboxes.get(i).isSelected()) {
+                nuevosComplementos.add(pedido.getComplementos().get(i));
+            }
+        }
+        pedido.getComplementos().clear();
+        pedido.getComplementos().addAll(nuevosComplementos);
+
+        pedido.setComentario(txtComentario.getText());
+
+        double total = 0;
+        for (Ingrediente ing : pedido.getIngredientes()) {
+            total += ing.getPrecio();
+        }
+        for (Complemento com : pedido.getComplementos()) {
+            total += com.getPrecio();
+        }
+        pedido.setMonto(total);
+
+        JOptionPane.showMessageDialog(this, "Pedido actualizado!\nMonto total: $" + pedido.getMonto());
+
+        new SeleccionarMetodoPago(pedido).setVisible(true);
     }
 
     /**
