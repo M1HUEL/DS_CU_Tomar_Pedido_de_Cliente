@@ -1,36 +1,9 @@
 package com.itson.src.presentacion;
 
-import java.awt.BorderLayout;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+public class PersonalizarPedido extends javax.swing.JFrame {
 
-/**
- *
- * @author Manuel Donato Hernandez Burgos
- */
-public class GestionarPedido extends javax.swing.JFrame {
-
-    public GestionarPedido() {
+    public PersonalizarPedido() {
         initComponents();
-
-        setLayout(new BorderLayout());
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout(10, 10));
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        JLabel titulo = new JLabel("Gestionar Pedido");
-        titulo.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JButton button2 = new JButton("Hey!");
-
-        panel.add(titulo, BorderLayout.NORTH);
-        panel.add(button2, BorderLayout.CENTER);
-
-        add(panel, BorderLayout.CENTER);
     }
 
     /**
@@ -43,6 +16,7 @@ public class GestionarPedido extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
