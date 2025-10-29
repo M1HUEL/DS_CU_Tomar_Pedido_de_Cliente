@@ -1,9 +1,67 @@
 package com.itson.src.presentacion;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import tomarPedido.objetosNegocio.Pedido;
+
 public class SeleccionarMetodoPago extends javax.swing.JFrame {
 
-    public SeleccionarMetodoPago() {
-        initComponents();
+    public SeleccionarMetodoPago(Pedido pedido) {
+
+        setTitle("Seleccionar Método de Pago");
+        setSize(1440, 720);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setLayout(new BorderLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        JLabel titulo = new JLabel("Seleciona tu método de pago", SwingConstants.CENTER);
+        panel.add(titulo, BorderLayout.NORTH);
+
+        JPanel botonesPanel = new JPanel(new GridLayout(0, 2, 10, 10));
+
+        JButton btnEfectivo = new JButton("Efectivo");
+        btnEfectivo.addActionListener(e -> seleccionarMetodo("Efectivo"));
+        botonesPanel.add(btnEfectivo);
+
+        JButton btnCredito = new JButton("Tarjeta de crédito");
+        btnCredito.addActionListener(e -> seleccionarMetodo("Tarjeta de crédito"));
+        botonesPanel.add(btnCredito);
+
+        JButton btnDebito = new JButton("Tarjeta de débito");
+        btnDebito.addActionListener(e -> seleccionarMetodo("Tarjeta de débito"));
+        botonesPanel.add(btnDebito);
+
+        JButton btnTransferencia = new JButton("Transferencia bancaria");
+        btnTransferencia.addActionListener(e -> seleccionarMetodo("Transferencia bancaria"));
+        botonesPanel.add(btnTransferencia);
+
+        JButton btnPayPal = new JButton("PayPal");
+        btnPayPal.addActionListener(e -> seleccionarMetodo("PayPal"));
+        botonesPanel.add(btnPayPal);
+
+        JButton btnMercadoPago = new JButton("Mercado Pago");
+        btnMercadoPago.addActionListener(e -> seleccionarMetodo("Mercado Pago"));
+        botonesPanel.add(btnMercadoPago);
+
+        panel.add(botonesPanel, BorderLayout.CENTER);
+
+        add(panel, BorderLayout.CENTER);
+    }
+
+    private void seleccionarMetodo(String metodo) {
+        JOptionPane.showMessageDialog(this, "Método de pago seleccionado: " + metodo);
+
+        RegistrarMetodoPago registrarPago = new RegistrarMetodoPago(metodo);
+        registrarPago.setVisible(true);
     }
 
     /**
