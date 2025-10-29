@@ -1,4 +1,6 @@
-package src.tomarPedido;
+package tomarPedido;
+
+import tomarPedido.dao.PedidoDAO;
 
 /**
  *
