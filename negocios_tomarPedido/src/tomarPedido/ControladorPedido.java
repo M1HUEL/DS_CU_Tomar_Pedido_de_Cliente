@@ -1,4 +1,4 @@
-package src.tomarPedido;
+package tomarPedido;
 
 /**
  *
