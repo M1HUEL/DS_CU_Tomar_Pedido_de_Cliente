@@ -1,6 +1,7 @@
 package com.itson.src.presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.HeadlessException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -9,6 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import tomarPedido.ControladorPedido;
+import tomarPedido.ServicioPedido;
+import tomarPedido.dao.PedidoDAO;
 
 public class RegistrarMetodoPago extends javax.swing.JFrame {
 
@@ -33,6 +37,18 @@ public class RegistrarMetodoPago extends javax.swing.JFrame {
 
         if (metodoPago.equalsIgnoreCase("Efectivo")) {
             centro.add(new JLabel("Pagarás en efectivo al recibir el pedido."));
+
+            try {
+                PedidoDAO pedidoDAO = new PedidoDAO("conexion-url");
+                ServicioPedido servicio = new ServicioPedido(pedidoDAO);
+                ControladorPedido controlador = new ControladorPedido(servicio);
+
+                controlador.crearNuevoPedido();
+
+                JOptionPane.showMessageDialog(this, "Pago registrado con éxito usando: " + metodoPago);
+            } catch (HeadlessException ex) {
+                JOptionPane.showMessageDialog(this, "Error al registrar el pago: " + ex.getMessage());
+            }
         } else if (metodoPago.equalsIgnoreCase("Tarjeta de crédito")
                 || metodoPago.equalsIgnoreCase("Tarjeta de débito")) {
 
