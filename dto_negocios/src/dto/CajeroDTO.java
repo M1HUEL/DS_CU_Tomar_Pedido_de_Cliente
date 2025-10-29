@@ -12,17 +12,17 @@ public class CajeroDTO {
 
     private int id;
     private String nombre;
-    private String password;
+    private String contraseña;
     private String turno;
     private String telefono;
 
     public CajeroDTO() {
     }
 
-    public CajeroDTO(int id, String nombre, String password, String turno, String telefono) {
+    public CajeroDTO(int id, String nombre, String contraseña, String turno, String telefono) {
         this.id = id;
         this.nombre = nombre;
-        this.password = password;
+        this.contraseña = contraseña;
         this.turno = turno;
         this.telefono = telefono;
     }
@@ -43,12 +43,12 @@ public class CajeroDTO {
         this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public String getTurno() {
@@ -69,7 +69,7 @@ public class CajeroDTO {
 
     @Override
     public String toString() {
-        return "CajeroDTO{" + "id=" + id + ", nombre=" + nombre + ", password=" + password + ", turno=" + turno + ", telefono=" + telefono + '}';
+        return "CajeroDTO{" + "id=" + id + ", nombre=" + nombre + ", contrase\u00f1a=" + contraseña + ", turno=" + turno + ", telefono=" + telefono + '}';
     }
 
 }
