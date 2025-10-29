@@ -1,5 +1,7 @@
 package tomarPedido.dao;
 
+import tomarPedido.objetosNegocio.Pedido;
+
 /**
  *
  * @author Diego Ernesto Reynaga Avilez
@@ -8,11 +10,20 @@ public class PedidoDAO {
 
     private String conn;
 
-    public PedidoDAO(String conn) {
-        this.conn = conn;
+    public void crear(Pedido pedido) {
+        // ...
     }
 
-    public void insertarPedido() {
-        System.out.println("El pedido se ha ingresado!");
+    public Pedido buscarPorId(int id) {
+        // ...
+        return null;
+    }
+
+    public void actualizar(Pedido pedido) {
+        // ...
+    }
+
+    public void eliminar(int id) {
+        // ...
     }
 }
