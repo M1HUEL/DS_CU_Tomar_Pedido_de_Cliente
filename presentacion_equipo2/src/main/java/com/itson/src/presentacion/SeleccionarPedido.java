@@ -1,6 +1,7 @@
 package com.itson.src.presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,13 +23,34 @@ public class SeleccionarPedido extends javax.swing.JFrame {
         panel.setLayout(new BorderLayout(10, 10));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JLabel titulo = new JLabel("Gestionar Pedido");
+        JLabel titulo = new JLabel("Seleccionar Pedido");
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JButton button2 = new JButton("Hey!");
+        JPanel pedidos = new JPanel();
+        pedidos.setLayout(new GridLayout(3, 3, 10, 10));
+
+        JButton button1 = new JButton("Pedido");
+        JButton button2 = new JButton("Pedido");
+        JButton button3 = new JButton("Pedido");
+        JButton button4 = new JButton("Pedido");
+        JButton button5 = new JButton("Pedido");
+        JButton button6 = new JButton("Pedido");
+        JButton button7 = new JButton("Pedido");
+        JButton button8 = new JButton("Pedido");
+        JButton button9 = new JButton("Pedido");
+
+        pedidos.add(button1);
+        pedidos.add(button2);
+        pedidos.add(button3);
+        pedidos.add(button4);
+        pedidos.add(button5);
+        pedidos.add(button6);
+        pedidos.add(button7);
+        pedidos.add(button8);
+        pedidos.add(button9);
 
         panel.add(titulo, BorderLayout.NORTH);
-        panel.add(button2, BorderLayout.CENTER);
+        panel.add(pedidos, BorderLayout.CENTER);
 
         add(panel, BorderLayout.CENTER);
     }

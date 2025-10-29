@@ -7,31 +7,36 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Inicio extends javax.swing.JFrame {
-
+    
     public Inicio() {
         initComponents();
-
+        
         setLayout(new BorderLayout());
-
+        
         JPanel main = new JPanel();
         main.setLayout(new BorderLayout());
         main.setBorder(BorderFactory.createEmptyBorder(10, 500, 10, 500));
-
+        
         JPanel botones = new JPanel();
         botones.setLayout(new GridLayout(0, 1, 10, 10));
-
-        JButton button1 = new JButton("Iniciar Pedido");
+        
+        JButton btnIniciarPedido = new JButton("Iniciar Pedido");
+        btnIniciarPedido.addActionListener((e) -> {
+            SeleccionarPedido seleccionarPedido = new SeleccionarPedido();
+            seleccionarPedido.setVisible(true);
+        });
+        
         JButton button2 = new JButton("Hey!");
         JButton button3 = new JButton("Hey!");
         JButton button4 = new JButton("Hey!");
-
-        botones.add(button1);
+        
+        botones.add(btnIniciarPedido);
         botones.add(button2);
         botones.add(button3);
         botones.add(button4);
-
+        
         main.add(botones, BorderLayout.NORTH);
-
+        
         add(main, BorderLayout.CENTER);
     }
 
