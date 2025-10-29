@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SeleccionarPedido gestionarPedido = new SeleccionarPedido();
-        gestionarPedido.setVisible(true);
+        Inicio inicio = new Inicio();
+        inicio.setVisible(true);
 
     }
 
